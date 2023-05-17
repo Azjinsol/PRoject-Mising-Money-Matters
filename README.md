@@ -1,2 +1,2 @@
-# PRoject-Mising-Money-Matters
+# Project-Mising-Money-Matters
 SQL Project Challenges 
