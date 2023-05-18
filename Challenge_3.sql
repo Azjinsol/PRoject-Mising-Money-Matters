@@ -72,4 +72,48 @@ GROUP BY
 ORDER BY 
 	e.LastName
 
---3.)
+--3.) Jane Peacock made the highest commission of $170.65.
+
+--4.) 
+
+SELECT 
+	c.FirstName AS [Customer FN],
+	c.LastName AS [Customer LN],
+	e.FirstName AS [Employee FN], 
+	e.LastName AS [Employee LN],
+	SUM(i.total) AS [Total Sales],
+	ROUND(SUM(i.total) * 0.15, 2) AS [Commmission Payout]
+FROM
+	Invoice i
+INNER JOIN 
+	Customer c
+ON 
+	i.CustomerId = c.CustomerId
+INNER JOIN
+	Employee e 
+ON 
+	e.EmployeeId = c.SupportRepId
+WHERE 
+	InvoiceDate >= '2011-01-01' AND InvoiceDate <= '2012-12-31'
+AND 
+	e.LastName = 'Peacock'
+GROUP BY
+ c.FirstName,
+ c.LastName,
+ e.FirstName,
+ e.LastName
+ORDER BY 
+	[Total Sales] DESC
+
+--5.) John Doeein made the highest purchase of $1000.86.
+
+--6.) 
+
+SELECT 
+	*
+FROM 
+	Customer
+WHERE 
+	LastName = 'Doeein'
+
+--7.) Jane Peacock is our primary person of interest.
