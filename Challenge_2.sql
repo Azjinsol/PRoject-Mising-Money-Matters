@@ -17,7 +17,7 @@ in business?
 */
 
 -- 1.)
-/*
+
 SELECT
 	c.FirstName AS [CustomerFN],
 	c.LastName AS [CustomerLN],
@@ -32,10 +32,10 @@ WHERE
 	InvoiceDate >= '2011-01-01' AND InvoiceDate <= '2012-12-31'
 ORDER BY 
 	i.total DESC 
-*/
+
 	
 -- 2.)
-/*
+
 SELECT
 	c.FirstName AS [CustomerFN],
 	c.LastName AS [CustomerLN],
@@ -56,10 +56,10 @@ WHERE
 	InvoiceDate >= '2011-01-01' AND InvoiceDate <= '2012-12-31'
 ORDER BY 
 	i.total DESC 
-*/
+
 
 --3.)
-/*
+
 SELECT 
 	COUNT(total) AS [Num of Transactions Above Avg]
 FROM 
@@ -73,10 +73,14 @@ WHERE
 		WHERE 
 			InvoiceDate >= '2011-01-01' AND InvoiceDate <= '2012-12-31')
 AND InvoiceDate >= '2011-01-01' AND InvoiceDate <= '2012-12-31'
-*/
+
 
 --4.)
-SELECT
 
+SELECT
+	ROUND(AVG(total), 2) AS [Avg Transaction Amount],
+	strftime('%Y', InvoiceDate) AS Year
 FROM 
 	Invoice
+GROUP BY 
+	strftime('%Y', InvoiceDate)
